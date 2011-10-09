@@ -15,7 +15,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.inventory.ItemStack;
 import sun.rmi.runtime.Log;
 
-public class BlockEvent extends BlockListener{
+public class BlockEvents extends BlockListener{
 
        @Override
        public void onBlockBreak(BlockBreakEvent event){
