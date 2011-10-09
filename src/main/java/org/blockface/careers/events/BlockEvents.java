@@ -23,7 +23,7 @@ public class BlockEvents extends BlockListener{
                         drop.setType(Material.LAPIS_ORE);
                     else if(bid == 16)
                         drop.setType(Material.COAL);
-                    player.getWorld().dropItemNaturally(event.getBlock().getLocation(),drop);
+                    player.getWorld().dropItem(event.getBlock().getLocation(),drop);
                 }
              }
        }
