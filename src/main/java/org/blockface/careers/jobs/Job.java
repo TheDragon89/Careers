@@ -14,6 +14,7 @@ public interface Job {
         POISON,
         DOUBLEDROP,
         SUPERBREAKER,
+        TREASUREFINDER,
         PICKPOCKET,
         ARREST,
         MIRACLEGROW,

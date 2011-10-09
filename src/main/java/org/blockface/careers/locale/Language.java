@@ -58,6 +58,7 @@ public enum Language {
     GREEN_THUMB_FAILED("notification.greenthumbfailed", "Your thumb is not as green as you thought.", 0),
     MIRACLE_GROW("notification.miraclegrow", "You managed to grow something.", 0),
     DOUBLE_DROP("notification.doubledrop", "You managed to find an extra ore.", 0),
+    TREASURE_FINDER("notification.treasurefinder", "You managed to find some some treasure! Aren't you lucky!", 0),
     SUPER_BREAKER_ACTIVATE("notification.superbreakeractivate", "You managed to activate your Super Breaker ability!", 0),
     SUPER_BREAKER_DEACTIVATE("notification.superbreakerdeactivate", "Your Super Breaker ability has been deactivated.", 0),
     SUPER_BREAKER_COOL_DOWN("notification.superbreakercooldown", "You are way to tired to do that again.", 0),
