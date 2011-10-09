@@ -7,9 +7,11 @@ import org.blockface.careers.managers.*;
 import org.blockface.careers.objects.Crime;
 import org.blockface.careers.util.Tools;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class CareersEvents {
 
@@ -113,5 +115,48 @@ public class CareersEvents {
             EconomyManager.payWage(damager, Config.getKnightWage());
             jd.addExperience();}
 
+    }
+
+    public static boolean DoubleDrop(Player player){
+        Job jd = JobsManager.getJob(player.getName());
+            if(!jd.hasAbility(Job.ABILITIES.DOUBLEDROP)) return false;
+
+            if(Tools.randBoolean(jd.getAbilityChance())){
+                jd.addExperience();
+                Language.DOUBLE_DROP.good(player);
+                return true;
+            }
+
+          return false;
+    }
+
+    public static void GreenThumb(Player player, Block block){
+        Job jd = JobsManager.getJob(player.getName());
+        if(!jd.hasAbility(Job.ABILITIES.GREENTHUMB)) return;
+        int blockid = block.getTypeId();
+        player.getInventory().remove(new ItemStack(block.getType(), 1));
+        if(Tools.randBoolean(jd.getAbilityChance())){
+               if(blockid == 3)
+                block.setTypeId(2);
+               if(blockid == 4)
+                   block.setTypeId(48);
+               if(blockid == 98)
+                   block.setData((byte) 1); //not sure if this will work
+            Language.GREEN_THUMB.good(player);
+            jd.addExperience();
+        }
+
+        Language.GREEN_THUMB_FAILED.bad(player);
+
+    }
+
+    public static void MiracleGrow(Player player, Block block, int id){
+        Job jd = JobsManager.getJob(player.getName());
+        if(!jd.hasAbility(Job.ABILITIES.MIRACLEGROW)) return;
+          if(Tools.randBoolean(jd.getAbilityChance())){
+              block.getRelative(0, 1, 0).setData((byte) 7);
+              Language.MIRACLE_GROW.good(player);
+              jd.addExperience();
+          }
     }
 }

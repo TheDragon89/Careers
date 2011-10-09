@@ -9,6 +9,7 @@ import org.blockface.careers.managers.*;
 import org.blockface.careers.objects.Inmate;
 import org.blockface.careers.objects.Witness;
 import org.blockface.careers.util.Tools;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.*;
@@ -42,7 +43,28 @@ public class PlayerEvents extends PlayerListener {
                 if(Config.isSwitchable(event.getClickedBlock().getTypeId()))
                     event.setCancelled(!CareersEvents.canSwitch(event.getPlayer()));
 
+        int helditemeid =  event.getPlayer().getItemInHand().getTypeId();
+        int blockid = event.getClickedBlock().getTypeId();
 
+        if(event.getAction() == Action.RIGHT_CLICK_BLOCK){
+            if(helditemeid == 295 || helditemeid == 361 || helditemeid == 362){
+                if(blockid == 3 || blockid == 4 ||blockid == 98)
+                   CareersEvents.GreenThumb(event.getPlayer(), event.getClickedBlock());
+
+                if(blockid == 60){
+                    CareersEvents.MiracleGrow(event.getPlayer(), event.getClickedBlock(), helditemeid);
+                }
+            }
+        }
+
+       if(event.getAction() == Action.RIGHT_CLICK_AIR){
+         if(helditemeid == 270 || helditemeid == 274 || helditemeid == 278 || helditemeid == 285 || helditemeid == 257){
+
+
+         }
+
+
+       }
 
     }
 

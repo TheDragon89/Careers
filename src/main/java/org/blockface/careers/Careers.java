@@ -6,6 +6,7 @@ import org.blockface.careers.commands.Info;
 import org.blockface.careers.commands.SetJail;
 import org.blockface.careers.commands.SetJob;
 import org.blockface.careers.config.Config;
+import org.blockface.careers.events.BlockEvents;
 import org.blockface.careers.events.EntityEvents;
 import org.blockface.careers.events.PlayerEvents;
 import org.blockface.careers.locale.Language;
@@ -88,6 +89,10 @@ public class Careers extends JavaPlugin {
         EntityEvents ee = new EntityEvents();
         pm.registerEvent(Event.Type.ENTITY_DAMAGE,ee, Event.Priority.Normal,this);
         pm.registerEvent(Event.Type.ENTITY_REGAIN_HEALTH,ee, Event.Priority.Normal,this);
+
+        //Block Events
+        BlockEvents be = new BlockEvents();
+        pm.registerEvent(Event.Type.BLOCK_BREAK, be, Event.Priority.Normal, this);
     }
 
     public static Careers getInstance() {
