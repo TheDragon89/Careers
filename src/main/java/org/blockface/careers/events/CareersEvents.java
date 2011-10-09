@@ -8,6 +8,7 @@ import org.blockface.careers.objects.Crime;
 import org.blockface.careers.util.Tools;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -119,22 +120,22 @@ public class CareersEvents {
 
     public static boolean DoubleDrop(Player player){
         Job jd = JobsManager.getJob(player.getName());
-            if(!jd.hasAbility(Job.ABILITIES.DOUBLEDROP)) return false;
+        if(!jd.hasAbility(Job.ABILITIES.DOUBLEDROP)) return false;
 
-            if(Tools.randBoolean(jd.getAbilityChance())){
-                jd.addExperience();
-                Language.DOUBLE_DROP.good(player);
-                return true;
-            }
+        if(Tools.randBoolean(jd.getAbilityChance())){
+            jd.addExperience();
+            Language.DOUBLE_DROP.good(player);
+            return true;
+        }
 
-          return false;
+        return false;
     }
 
     public static void GreenThumb(Player player, Block block){
         Job jd = JobsManager.getJob(player.getName());
         if(!jd.hasAbility(Job.ABILITIES.GREENTHUMB)) return;
         int blockid = block.getTypeId();
-        player.getInventory().remove(new ItemStack(block.getType(), 1));
+        player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
         if(Tools.randBoolean(jd.getAbilityChance())){
                if(blockid == 3)
                 block.setTypeId(2);
@@ -145,7 +146,7 @@ public class CareersEvents {
             Language.GREEN_THUMB.good(player);
             jd.addExperience();
         }
-
+        else
         Language.GREEN_THUMB_FAILED.bad(player);
 
     }
@@ -154,7 +155,12 @@ public class CareersEvents {
         Job jd = JobsManager.getJob(player.getName());
         if(!jd.hasAbility(Job.ABILITIES.MIRACLEGROW)) return;
           if(Tools.randBoolean(jd.getAbilityChance())){
-              block.getRelative(0, 1, 0).setData((byte) 7);
+              if(id == 295)
+                     block.getRelative(BlockFace.UP).setTypeIdAndData(59, (byte) 7, false);
+              else if(id == 364)
+                     block.getRelative(BlockFace.UP).setTypeIdAndData(104, (byte) 7, false);
+              else
+                    block.getRelative(BlockFace.UP).setTypeIdAndData(105, (byte) 7, false);
               Language.MIRACLE_GROW.good(player);
               jd.addExperience();
           }
