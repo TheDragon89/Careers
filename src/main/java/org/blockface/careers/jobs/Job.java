@@ -14,7 +14,8 @@ public interface Job {
         POISON,
         SUPERSMELT,
         PICKPOCKET,
-        ARREST
+        ARREST,
+        TAME
     }
 
     public String getName();

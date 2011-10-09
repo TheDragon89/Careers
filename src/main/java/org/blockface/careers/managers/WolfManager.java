@@ -1,0 +1,19 @@
+package org.blockface.careers.managers;
+
+
+import org.blockface.careers.jobs.Job;
+import org.bukkit.entity.CreatureType;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Wolf;
+
+public class WolfManager {
+
+    public static void buyWolf(Player buyer, Player seller, Job job) {
+
+           if(!EconomyManager.pay(buyer,seller,cost,"a wolf")) return;
+            Wolf wolf = (Wolf)buyer.getWorld().spawnCreature(buyer.getLocation(), CreatureType.WOLF);
+            wolf.setOwner(buyer);
+
+    }
+
+}
