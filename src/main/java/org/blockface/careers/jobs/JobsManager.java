@@ -15,7 +15,7 @@ public class JobsManager {
     public static Collection<Job> getAllJobs() {
         return JOBS.values();
     }
-
+    //
     public static Job constructJob(String job,String player) {
         Job ret = new GenericJob(player);
         if(job.equalsIgnoreCase("Thief")) ret = new Thief(player);
