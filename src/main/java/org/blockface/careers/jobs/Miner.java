@@ -19,6 +19,7 @@ public class Miner extends GenericJob {
         this.pluralName = "Miners";
         this.abilities.add(ABILITIES.DOUBLEDROP);
         this.abilities.add(ABILITIES.SUPERBREAKER);
+        this.abilities.add(ABILITIES.TREASUREFINDER);
         this.color = ChatColor.AQUA;
     }
 
