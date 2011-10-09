@@ -119,15 +119,15 @@ public class CareersEvents {
 
     public static boolean DoubleDrop(Player player){
         Job jd = JobsManager.getJob(player.getName());
-            if(!jd.hasAbility(Job.ABILITIES.DOUBLEDROP)) return false;
+        if(!jd.hasAbility(Job.ABILITIES.DOUBLEDROP)) return false;
 
-            if(Tools.randBoolean(jd.getAbilityChance())){
-                jd.addExperience();
-                Language.DOUBLE_DROP.good(player);
-                return true;
-            }
+        if(Tools.randBoolean(jd.getAbilityChance())){
+            jd.addExperience();
+            Language.DOUBLE_DROP.good(player);
+            return true;
+        }
 
-          return false;
+        return false;
     }
 
     public static void GreenThumb(Player player, Block block){
