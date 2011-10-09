@@ -54,7 +54,6 @@ public class PlayerEvents extends PlayerListener {
 
        if(event.getAction() == Action.RIGHT_CLICK_AIR && event.getPlayer().getItemInHand() != null){
             int helditemeid =  event.getPlayer().getItemInHand().getTypeId();
-            int blockid = event.getClickedBlock().getTypeId();
             if(helditemeid == 270 || helditemeid == 274 || helditemeid == 278 || helditemeid == 285 || helditemeid == 257){
 
 
