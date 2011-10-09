@@ -10,6 +10,8 @@ public class WolfManager {
 
     public static void buyWolf(Player buyer, Player seller, Job job) {
 
+        //Hope this is right
+
            if(!EconomyManager.pay(buyer,seller,cost,"a wolf")) return;
             Wolf wolf = (Wolf)buyer.getWorld().spawnCreature(buyer.getLocation(), CreatureType.WOLF);
             wolf.setOwner(buyer);
