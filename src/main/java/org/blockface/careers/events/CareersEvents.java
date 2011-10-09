@@ -88,6 +88,10 @@ public class CareersEvents {
         //Heal
         if(jrc.hasAbility(Job.ABILITIES.HEAL)) {
             HealthManager.healPlayer(player,rightClicked,jrc);}
+
+        //Tame
+        if(jrc.hasAbility(Job.ABILITIES.TAME)) {
+            WolfManager.buyWolf(player,rightClicked,jrc);}
         
     }
     

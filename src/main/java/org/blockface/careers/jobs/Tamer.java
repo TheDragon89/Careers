@@ -19,7 +19,7 @@ public class Tamer extends GenericJob {
         this.name = "Tamer";
         this.pluralName = "Tamers";
         this.abilities.add(ABILITIES.TAME);
-        this.color = ChatColor.GREEN;
+        this.color = ChatColor.LIGHT_PURPLE;
     }
 
     @Override
