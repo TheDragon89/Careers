@@ -12,9 +12,13 @@ public interface Job {
         ANTIMOB,
         KILL,
         POISON,
-        SUPERSMELT,
+        DOUBLEDROP,
+        SUPERBREAKER,
         PICKPOCKET,
-        ARREST
+        ARREST,
+        MIRACLEGROW,
+        GREENTHUMB
+
     }
 
     public String getName();

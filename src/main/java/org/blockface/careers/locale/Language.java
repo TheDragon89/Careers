@@ -53,7 +53,14 @@ public enum Language {
     IN_HELL("notification.inhell","You are stuck in hell for %s seconds." ,0),
     CANNOT_AFFORD("notification.cannotafford","You need an additional %s for %s" ,0),
     PICKPOCKETED("notification.pickPocketed","You managed to pickpocket %s" ,0),
-    FAILED_PICKPOCKET("notification.failedPickPocket","You've been caught trying to pickpocket!" ,0)
+    FAILED_PICKPOCKET("notification.failedPickPocket","You've been caught trying to pickpocket!" ,0),
+    GREEN_THUMB("notification.greenthumb", "You have successfully used your Green Thumb!", 0),
+    GREEN_THUMB_FAILED("notification.greenthumbfailed", "Your thumb is not as green as you thought.", 0),
+    MIRACLE_GROW("notification.miraclegrow", "You managed to grow something.", 0),
+    DOUBLE_DROP("notification.doubledrop", "You managed to find an extra ore.", 0),
+    SUPER_BREAKER_ACTIVATE("notification.superbreakeractivate", "You managed to activate your Super Breaker ability!", 0),
+    SUPER_BREAKER_DEACTIVATE("notification.superbreakerdeactivate", "Your Super Breaker ability has been deactivated.", 0),
+    SUPER_BREAKER_COOL_DOWN("notification.superbreakercooldown", "You are way to tired to do that again.", 0),
 
 
     ;
