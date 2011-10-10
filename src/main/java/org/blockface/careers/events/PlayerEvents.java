@@ -95,5 +95,4 @@ public class PlayerEvents extends PlayerListener {
         event.setRespawnLocation(HellManager.getHell());
     }
 
-
 }
