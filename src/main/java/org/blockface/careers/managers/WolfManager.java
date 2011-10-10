@@ -14,7 +14,7 @@ public class WolfManager {
 
 
 
-            if(!EconomyManager.pay(buyer,seller,20,"a wolf")) return;
+            if(!EconomyManager.paywolf(buyer,seller,20,"a wolf")) return;
             Wolf wolf = (Wolf)buyer.getWorld().spawnCreature(buyer.getLocation(), CreatureType.WOLF);
             wolf.setOwner(buyer);
 

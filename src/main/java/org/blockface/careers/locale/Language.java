@@ -62,8 +62,8 @@ public enum Language {
     SUPER_BREAKER_ACTIVATE("notification.superbreakeractivate", "You managed to activate your Super Breaker ability!", 0),
     SUPER_BREAKER_DEACTIVATE("notification.superbreakerdeactivate", "Your Super Breaker ability has been deactivated.", 0),
     SUPER_BREAKER_COOL_DOWN("notification.superbreakercooldown", "You are way to tired to do that again.", 0),
-
-
+    SENT_MONEY_WOLF("notification.sentmoney","You paid %s for a wolf",0),
+    RECEIVED_MONEY_WOLF("notification.receivedmoney","You were paid %s for a wolf",0),
     ;
 
     private static List<String> deprecatedPaths = Arrays.asList(
