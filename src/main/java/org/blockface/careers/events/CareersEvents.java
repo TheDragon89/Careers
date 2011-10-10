@@ -169,4 +169,15 @@ public class CareersEvents {
               jd.addExperience();
           }
     }
+
+    public static boolean TreasureFinder(Player player){
+       Job jd = JobsManager.getJob(player.getName());
+        if(!jd.hasAbility(Job.ABILITIES.TREASUREFINDER)) return false;
+          if(Tools.randBoolean(jd.getAbilityChance())){
+            jd.addExperience();
+            Language.TREASURE_FINDER.good(player);
+            return true;
+        }
+        return false;
+    }
 }
