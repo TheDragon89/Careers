@@ -15,7 +15,7 @@ public class JobsManager {
     public static Collection<Job> getAllJobs() {
         return JOBS.values();
     }
-
+    //
     public static Job constructJob(String job,String player) {
         Job ret = new GenericJob(player);
         if(job.equalsIgnoreCase("Thief")) ret = new Thief(player);
@@ -27,6 +27,7 @@ public class JobsManager {
         if(job.equalsIgnoreCase("Miner")) ret = new Miner(player);
         if(job.equalsIgnoreCase("Farmer")) ret = new Farmer(player);
         if(job.equalsIgnoreCase("Boss")) ret = new Boss(player);
+        if(job.equalsIgnoreCase("Tamer")) ret = new Tamer(player);
         return ret;
     }
 

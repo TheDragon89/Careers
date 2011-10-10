@@ -18,7 +18,8 @@ public interface Job {
         PICKPOCKET,
         ARREST,
         MIRACLEGROW,
-        GREENTHUMB
+        GREENTHUMB,
+        TAME
 
     }
 
