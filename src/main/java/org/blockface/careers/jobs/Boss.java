@@ -10,17 +10,14 @@ public class Boss extends GenericJob {
     }
 
     public Boss(String player) {
-        super(player);
+        super(player, "Boss", "Bosses", ChatColor.GOLD, "You can't get this job.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Boss";
-        this.pluralName = "Bosses";
         for(ABILITIES abilities : ABILITIES.values()) {
             this.abilities.add(abilities);
         }
-        this.color = ChatColor.GOLD;
     }
 
     @Override

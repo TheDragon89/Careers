@@ -10,16 +10,13 @@ public class Thief extends GenericJob {
     }
 
     public Thief(String player) {
-        super(player);
+        super(player, "Thief", "Thieves", ChatColor.LIGHT_PURPLE, "Pickpocket and lockpick other players..");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Thief";
-        this.pluralName = "Thieves";
         this.abilities.add(ABILITIES.LOCKPICK);
         this.abilities.add(ABILITIES.PICKPOCKET);
-        this.color = ChatColor.GRAY;
     }
 
     @Override

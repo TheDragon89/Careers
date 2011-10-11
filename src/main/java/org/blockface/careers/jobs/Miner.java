@@ -10,17 +10,14 @@ public class Miner extends GenericJob {
     }
 
     public Miner(String player) {
-        super(player);
+        super(player, "Miner", "Miners", ChatColor.AQUA, "Chance of finding extra ores.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Miner";
-        this.pluralName = "Miners";
         this.abilities.add(ABILITIES.DOUBLEDROP);
         this.abilities.add(ABILITIES.SUPERBREAKER);
         this.abilities.add(ABILITIES.TREASUREFINDER);
-        this.color = ChatColor.AQUA;
     }
 
     @Override
