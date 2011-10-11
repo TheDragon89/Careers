@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 public class Thief extends GenericJob {
 
     public Thief() {
-        loadInfo();
+        this("");
     }
 
     public Thief(String player) {

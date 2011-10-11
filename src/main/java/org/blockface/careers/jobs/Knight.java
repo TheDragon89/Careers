@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 public class Knight extends GenericJob {
 
     public Knight() {
-        loadInfo();
+        this("");
     }
 
     public Knight(String player) {

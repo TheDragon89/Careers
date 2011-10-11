@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class Officer extends GenericJob{
 
     public Officer() {
-        loadInfo();
+        this("");
     }
 
     public Officer(String player) {

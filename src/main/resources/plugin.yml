@@ -19,3 +19,6 @@ commands:
         description: Set jail.
         usage: /setjail
         permission: careers.setjail
+    joblist:
+        description: See jobs.
+        usage: /joblist

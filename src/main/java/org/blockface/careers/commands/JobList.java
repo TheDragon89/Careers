@@ -28,7 +28,7 @@ public class JobList implements CommandExecutor{
                 Class clazz = Class.forName("org.blockface.careers.jobs."+c.substring(0,c.length()-6));
                 if(clazz.isInterface()) continue;
                 Job job = (Job)clazz.newInstance();
-                sender.sendMessage(ChatColor.DARK_GRAY + "| " + job.getFormattedName());
+                sender.sendMessage(ChatColor.DARK_GRAY + "| " + job.getFormattedName() + " - " + ChatColor.WHITE + job.getDescription());
             }
         } catch (Exception e) {
             e.printStackTrace();

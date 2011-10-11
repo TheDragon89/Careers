@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class Tamer extends GenericJob {
 
     public Tamer() {
-        loadInfo();
+        this("");
     }
 
     public Tamer(String player) {

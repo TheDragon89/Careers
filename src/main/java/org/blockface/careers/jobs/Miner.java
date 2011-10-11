@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 public class Miner extends GenericJob {
 
     public Miner() {
-        loadInfo();
+        this("");
     }
 
     public Miner(String player) {

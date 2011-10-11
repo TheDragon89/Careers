@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 public class Farmer extends GenericJob {
 
     public Farmer() {
-        loadInfo();
+        this("");
     }
 
     public Farmer(String player) {
