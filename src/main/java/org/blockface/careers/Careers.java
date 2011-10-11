@@ -1,10 +1,7 @@
 package org.blockface.careers;
 
 import org.blockface.bukkitstats.CallHome;
-import org.blockface.careers.commands.AddExp;
-import org.blockface.careers.commands.Info;
-import org.blockface.careers.commands.SetJail;
-import org.blockface.careers.commands.SetJob;
+import org.blockface.careers.commands.*;
 import org.blockface.careers.config.Config;
 import org.blockface.careers.events.BlockEvents;
 import org.blockface.careers.events.EntityEvents;
@@ -71,6 +68,7 @@ public class Careers extends JavaPlugin {
         getCommand("jobinfo").setExecutor(new Info());
         getCommand("addexp").setExecutor(new AddExp());
         getCommand("setjail").setExecutor(new SetJail());
+        getCommand("joblist").setExecutor(new JobList());
     }
 
     private void registerEvents() {
