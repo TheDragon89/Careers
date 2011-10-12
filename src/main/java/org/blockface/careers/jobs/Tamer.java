@@ -7,19 +7,16 @@ import org.bukkit.entity.Player;
 public class Tamer extends GenericJob {
 
     public Tamer() {
-        loadInfo();
+        this("");
     }
 
     public Tamer(String player) {
-        super(player);
+        super(player, "Tamer", "Tamers", ChatColor.LIGHT_PURPLE, "Sell wolves.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Tamer";
-        this.pluralName = "Tamers";
         this.abilities.add(ABILITIES.TAME);
-        this.color = ChatColor.LIGHT_PURPLE;
     }
 
     @Override

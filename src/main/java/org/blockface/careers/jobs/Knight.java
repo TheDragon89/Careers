@@ -6,19 +6,16 @@ import org.bukkit.entity.Player;
 public class Knight extends GenericJob {
 
     public Knight() {
-        loadInfo();
+        this("");
     }
 
     public Knight(String player) {
-        super(player);
+        super(player, "Knight", "Knights", ChatColor.YELLOW, "Kill mobs and be paid.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Knight";
-        this.pluralName = "Knights";
         this.abilities.add(ABILITIES.ANTIMOB);
-        this.color = ChatColor.YELLOW;
     }
 
     @Override

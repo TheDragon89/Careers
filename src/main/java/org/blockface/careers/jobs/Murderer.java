@@ -5,19 +5,16 @@ import org.bukkit.entity.Player;
 
 public class Murderer extends GenericJob {
     public Murderer() {
-        loadInfo();
+        this("");
     }
 
     public Murderer(String player) {
-        super(player);
+        super(player, "Murderer", "Murderers", ChatColor.DARK_RED, "Kill other players.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Murderer";
-        this.pluralName = "Murderers";
         this.abilities.add(ABILITIES.KILL);
-        this.color = ChatColor.DARK_RED;
     }
 
     @Override

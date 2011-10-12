@@ -6,19 +6,16 @@ import org.bukkit.entity.Player;
 public class Assassin extends GenericJob {
 
     public Assassin() {
-        loadInfo();
+        this("");
     }
 
     public Assassin(String player) {
-        super(player);
+        super(player, "Assassin", "Assassins", ChatColor.RED, "Poison players using Mushrooms.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Assassin";
-        this.pluralName = "Assassins";
         this.abilities.add(ABILITIES.POISON);
-        this.color = ChatColor.RED;
     }
 
     @Override

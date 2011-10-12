@@ -7,19 +7,16 @@ import org.bukkit.entity.Player;
 public class Officer extends GenericJob{
 
     public Officer() {
-        loadInfo();
+        this("");
     }
 
     public Officer(String player) {
-        super(player);
+        super(player, "Officer", "Officers", ChatColor.BLUE, "Right click criminals to arrest.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Officer";
-        this.pluralName = "Officers";
         this.abilities.add(ABILITIES.ARREST);
-        this.color = ChatColor.BLUE;
     }
 
     @Override

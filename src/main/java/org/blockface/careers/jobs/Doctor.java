@@ -6,19 +6,16 @@ import org.bukkit.entity.Player;
 public class Doctor extends GenericJob {
 
     public Doctor() {
-        loadInfo();
+        this("");
     }
 
     public Doctor(String player) {
-        super(player);
+        super(player, "Doctor", "Doctors", ChatColor.DARK_PURPLE, "Heal players who right-click you.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Doctor";
-        this.pluralName = "Doctors";
         this.abilities.add(ABILITIES.HEAL);
-        this.color = ChatColor.DARK_PURPLE;
     }
 
     @Override

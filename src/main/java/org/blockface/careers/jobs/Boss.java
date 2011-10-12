@@ -6,21 +6,18 @@ import org.bukkit.entity.Player;
 public class Boss extends GenericJob {
 
     public Boss() {
-        loadInfo();
+        this("");
     }
 
     public Boss(String player) {
-        super(player);
+        super(player, "Boss", "Bosses", ChatColor.GOLD, "You can't get this job.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Boss";
-        this.pluralName = "Bosses";
         for(ABILITIES abilities : ABILITIES.values()) {
             this.abilities.add(abilities);
         }
-        this.color = ChatColor.GOLD;
     }
 
     @Override
@@ -31,6 +28,6 @@ public class Boss extends GenericJob {
     @Override
     public void printInfo(Player player) {
         super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Health Regen Rate: " + getAbilityChance() + "%");
+        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "All Abilities: " + getAbilityChance() + "%");
     }
 }

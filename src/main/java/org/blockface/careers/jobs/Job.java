@@ -53,4 +53,6 @@ public interface Job {
 
     public void applyTitle();
 
+    public String getDescription();
+
 }

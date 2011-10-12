@@ -52,8 +52,8 @@ public class EconomyManager {
         }
         source.subtract(amount);
         target.add(amount);
-        Language.RECEIVED_MONEY.good(trg,method.format(amount));
-        Language.SENT_MONEY.good(src,method.format(amount));
+        Language.RECEIVED_MONEY.good(trg,method.format(amount), reason);
+        Language.SENT_MONEY.good(src,method.format(amount), reason);
         return true;
     }
 
