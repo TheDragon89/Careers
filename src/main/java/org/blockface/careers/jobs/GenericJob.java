@@ -15,6 +15,7 @@ public class GenericJob implements Job{
     protected String pluralName = "Bums";
     protected ChatColor color = ChatColor.WHITE;
     protected String player;
+    protected String description;
 
     protected int exp=1;
     protected int expGained=1;
@@ -23,6 +24,14 @@ public class GenericJob implements Job{
 
     public GenericJob(String player) {
         this.player = player;
+    }
+
+    public GenericJob(String player, String name, String pluralName, ChatColor color, String description) {
+        this.player = player;
+        this.name = name;
+        this.pluralName = pluralName;
+        this.color = color;
+        this.description = description;
     }
 
     public GenericJob() {
@@ -103,5 +112,9 @@ public class GenericJob implements Job{
 
     public void applyTitle() {
         Bukkit.getServer().getPlayer(this.player).setDisplayName(this.getFormattedName() + " " + this.player);
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 }

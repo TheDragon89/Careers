@@ -6,20 +6,17 @@ import org.bukkit.entity.Player;
 public class Farmer extends GenericJob {
 
     public Farmer() {
-        loadInfo();
+        this("");
     }
 
     public Farmer(String player) {
-        super(player);
+        super(player, "Farmer", "Farmers", ChatColor.GREEN, "Grow crops.");
         loadInfo();
     }
 
     private void loadInfo() {
-        this.name = "Farmer";
-        this.pluralName = "Farmers";
         this.abilities.add(ABILITIES.MIRACLEGROW);
         this.abilities.add(ABILITIES.GREENTHUMB);
-        this.color = ChatColor.GREEN;
     }
 
     @Override
