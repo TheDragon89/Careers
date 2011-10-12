@@ -38,7 +38,7 @@ public class BlockEvents extends BlockListener{
                     else if(chance%200 == 0)
                         player.getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.GOLD_INGOT, 1));
 
-                    else if(chance == 1000)
+                    else if(chance == 777)
                          player.getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.DIAMOND, 1));
 
                     else

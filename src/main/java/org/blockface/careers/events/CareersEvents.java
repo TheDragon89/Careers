@@ -146,7 +146,7 @@ public class CareersEvents {
                if(blockid == 4)
                    block.setTypeId(48);
                if(blockid == 98)
-                   block.setData((byte) 1); //not sure if this will work
+                   block.setData((byte) 1);
             Language.GREEN_THUMB.good(player);
             jd.addExperience();
         }
