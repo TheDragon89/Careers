@@ -1,11 +1,12 @@
 package org.blockface.careers.managers;
 
-import com.nijikokun.register.payment.Method;
-import com.nijikokun.register.payment.Methods;
 import org.blockface.careers.config.Config;
 import org.blockface.careers.locale.Language;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.getchunky.chunkyvillage.ChunkyTownManager;
+import org.getchunky.register.payment.Method;
+import org.getchunky.register.payment.Methods;
 
 public class EconomyManager {
 
@@ -22,6 +23,8 @@ public class EconomyManager {
 
     public static boolean payWage(Player player, double amount) {
         Method.MethodAccount source = method.getAccount(Config.getSourceAccount());
+
+        if(ChunkyVillageManager.usingChunkyVillage()) source = ChunkyTownManager.getTown(player).getAccount();
         Method.MethodAccount target = method.getAccount(player.getName());
         if(!source.hasEnough(amount)) {
             Language.NO_MONEY.bad(player);
