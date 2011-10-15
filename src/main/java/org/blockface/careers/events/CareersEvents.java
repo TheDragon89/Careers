@@ -131,7 +131,7 @@ public class CareersEvents {
         if(creature.getHealth() < 0) return;
         if(Tools.randBoolean(jd.getAbilityChance())) creature.damage(1000);
         if(creature.getHealth() - damage < 0) {
-            EconomyManager.payWage(damager, Config.getKnightWage());
+            EconomyManager.payWage(damager, Config.getKnightWage(), "killing a mob.");
             jd.addExperience();}
 
     }

@@ -22,7 +22,7 @@ public class EconomyManager {
         return method;
     }
 
-    public static boolean payWage(Player player, double amount) {
+    public static boolean payWage(Player player, double amount, String reason) {
         Method.MethodAccount source = method.getAccount(Config.getSourceAccount());
 
         if(ChunkyVillageManager.usingChunkyVillage()) {
@@ -39,7 +39,7 @@ public class EconomyManager {
             return false;}
         source.subtract(amount);
         target.add(amount);
-        Language.RECEIVED_MONEY.good(player,method.format(amount));
+        Language.RECEIVED_MONEY.good(player,method.format(amount), reason);
         return true;
     }
 
