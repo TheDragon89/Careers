@@ -50,7 +50,7 @@ public class EconomyManager {
         double amount = source.balance();
         source.subtract(amount);
         target.add(amount);
-        Language.RECEIVED_MONEY.good(trg,method.format(amount));
+        Language.RECEIVED_MONEY.good(trg,method.format(amount), "killing " + src.getName());
     }
 
     public static boolean pay(Player src, Player trg, double amount, String reason) {

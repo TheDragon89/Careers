@@ -128,6 +128,7 @@ public class CareersEvents {
         Job jd = JobsManager.getJob(damager.getName());
         if(!jd.hasAbility(Job.ABILITIES.ANTIMOB) || !(entity instanceof Creature)) return;
         Creature creature = (Creature)entity;
+        if(creature.getHealth() < 0) return;
         if(Tools.randBoolean(jd.getAbilityChance())) creature.damage(1000);
         if(creature.getHealth() - damage < 0) {
             EconomyManager.payWage(damager, Config.getKnightWage());
