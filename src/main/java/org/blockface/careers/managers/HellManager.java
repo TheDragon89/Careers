@@ -10,6 +10,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.getchunky.chunky.ChunkyManager;
+import org.getchunky.chunkyvillage.objects.ChunkyResident;
+import org.getchunky.chunkyvillage.objects.ChunkyTown;
 
 import javax.tools.Tool;
 import java.util.HashSet;
@@ -43,6 +46,11 @@ public class HellManager {
         dead.remove(name);
         Player player = Tools.getPlayer(name);
         if(!player.isOnline()) return;
+        if(ChunkyVillageManager.usingChunkyVillage()) {
+            ChunkyTown chunkyTown= new ChunkyResident(player).getTown();
+            if(chunkyTown != null) {
+                player.teleport(chunkyTown.getHome().getCoord().toLocation());
+                return;}}
         player.teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
     }
 

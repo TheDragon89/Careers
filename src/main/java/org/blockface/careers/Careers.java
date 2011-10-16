@@ -94,7 +94,7 @@ public class Careers extends JavaPlugin {
 
         //Block Events
         BlockEvents be = new BlockEvents();
-        pm.registerEvent(Event.Type.BLOCK_BREAK, be, Event.Priority.Normal, this);
+        pm.registerEvent(Event.Type.BLOCK_BREAK, be, Event.Priority.Highest, this);
         pm.registerEvent(Event.Type.BLOCK_PLACE, be, Event.Priority.Normal, this);
     }
 
