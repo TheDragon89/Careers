@@ -12,6 +12,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.getchunky.chunkyvillage.ChunkyVillage;
+import org.getchunky.chunkyvillage.objects.ChunkyTown;
 
 import java.util.HashMap;
 
@@ -42,6 +44,9 @@ public class JailManager {
     }
 
     public static void arrestPlayer(Player criminal, Player officer) {
+        if(ChunkyVillageManager.usingChunkyVillage() && ChunkyVillageManager.getStance(criminal, officer) != ChunkyTown.Stance.ALLY) {
+            Language.ARRESTED.bad(officer, criminal.getName());
+            return;}
         Crime crime = CrimeManager.getWanted(criminal.getName());
         CrimeManager.removeWanted(criminal.getName());
         dropInventory(criminal);

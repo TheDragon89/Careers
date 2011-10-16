@@ -2,7 +2,10 @@ package org.blockface.careers.managers;
 
 import org.blockface.careers.Careers;
 import org.blockface.careers.locale.Logging;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.getchunky.chunkyvillage.objects.ChunkyResident;
+import org.getchunky.chunkyvillage.objects.ChunkyTown;
 
 public class ChunkyVillageManager {
 
@@ -20,5 +23,11 @@ public class ChunkyVillageManager {
 
     public static boolean usingChunkyVillage() {
         return usingChunkyVillage;
+    }
+
+    public static ChunkyTown.Stance getStance(Player a, Player b) {
+        ChunkyResident ca = new ChunkyResident(a);
+        ChunkyResident cb = new ChunkyResident(b);
+        return ca.getTown().getEffectiveStance(cb.getTown());
     }
 }
