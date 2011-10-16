@@ -44,7 +44,7 @@ public class CareersEvents {
         if(ChunkyVillageManager.usingChunkyVillage()) {
             ChunkyPlayer a = ChunkyManager.getChunkyPlayer(attacker);
             ChunkyPlayer b = ChunkyManager.getChunkyPlayer(victim);
-            return ChunkyTownManager.getStance(a,b) == ChunkyTown.Stance.ENEMY || ChunkyTownManager.getStance(a,b) == ChunkyTown.Stance.NEUTRAL;
+            if(ChunkyTownManager.getStance(a,b) != ChunkyTown.Stance.ALLY) return true;
         }
 
         //Return if cannot kill
