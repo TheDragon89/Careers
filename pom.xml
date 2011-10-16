@@ -97,9 +97,16 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.dumptruckman</groupId>
+      <groupId>org.getchunky</groupId>
+      <artifactId>ChunkyVillage</artifactId>
+      <version>SNAPSHOT</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.getchunky</groupId>
       <artifactId>Chunky</artifactId>
-      <version>0.0.2</version>
+      <version>Colombo-SNAPSHOT</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>

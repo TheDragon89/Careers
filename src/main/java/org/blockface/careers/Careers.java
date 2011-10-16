@@ -8,6 +8,7 @@ import org.blockface.careers.events.EntityEvents;
 import org.blockface.careers.events.PlayerEvents;
 import org.blockface.careers.locale.Language;
 import org.blockface.careers.locale.Logging;
+import org.blockface.careers.managers.ChunkyVillageManager;
 import org.blockface.careers.managers.EconomyManager;
 import org.blockface.careers.managers.HellManager;
 import org.blockface.careers.managers.JailManager;
@@ -53,8 +54,11 @@ public class Careers extends JavaPlugin {
             //Load Hell
             HellManager.load();
 
+            //Hook ChunkyVillage
+            ChunkyVillageManager.loadChunky();
+
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
         setCommands();
@@ -85,12 +89,12 @@ public class Careers extends JavaPlugin {
 
         //Entity Events
         EntityEvents ee = new EntityEvents();
-        pm.registerEvent(Event.Type.ENTITY_DAMAGE,ee, Event.Priority.Normal,this);
+        pm.registerEvent(Event.Type.ENTITY_DAMAGE,ee, Event.Priority.Highest,this);
         pm.registerEvent(Event.Type.ENTITY_REGAIN_HEALTH,ee, Event.Priority.Normal,this);
 
         //Block Events
         BlockEvents be = new BlockEvents();
-        pm.registerEvent(Event.Type.BLOCK_BREAK, be, Event.Priority.Normal, this);
+        pm.registerEvent(Event.Type.BLOCK_BREAK, be, Event.Priority.Highest, this);
         pm.registerEvent(Event.Type.BLOCK_PLACE, be, Event.Priority.Normal, this);
     }
 

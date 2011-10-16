@@ -55,7 +55,7 @@ public class JailManager {
 		jailed.put(criminal.getName(), new Inmate(criminal, crime, time));
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Careers.getInstance(), new FreeJailed(criminal.getName()), 20L * time * 60);
         Language.ARRESTED.broadcastGood(criminal.getName(),crime.getType().name().toLowerCase());
-        EconomyManager.payWage(officer, Config.getOfficerWage());
+        EconomyManager.payWage(officer, Config.getOfficerWage(), "arresting " + criminal.getName());
     }
 
     private static void dropInventory(Player player)

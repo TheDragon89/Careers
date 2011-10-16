@@ -3,6 +3,7 @@ main: org.blockface.careers.Careers
 name: Careers
 url: http://blockface.org/
 version: ${project.version}-b${build.number}
+softdepend: [ChunkyVillage]
 commands:
     setjob:
         description: Set job.
