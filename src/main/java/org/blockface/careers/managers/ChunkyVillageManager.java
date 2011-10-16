@@ -28,6 +28,7 @@ public class ChunkyVillageManager {
     public static ChunkyTown.Stance getStance(Player a, Player b) {
         ChunkyResident ca = new ChunkyResident(a);
         ChunkyResident cb = new ChunkyResident(b);
+        if(ca.getTown() == null) return ChunkyTown.Stance.NEUTRAL;
         return ca.getTown().getEffectiveStance(cb.getTown());
     }
 }
