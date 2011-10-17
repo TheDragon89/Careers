@@ -78,5 +78,6 @@ public class EconomyManager {
         source.add(amount);
         Language.RECEIVED_MONEY.good(thief,method.format(amount));
     }
+
     
 }

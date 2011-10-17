@@ -23,3 +23,7 @@ commands:
     joblist:
         description: See jobs.
         usage: /joblist
+permissions:
+    careers.nohell:
+        description: No Hell
+        default: op

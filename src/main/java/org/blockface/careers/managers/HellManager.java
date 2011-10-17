@@ -54,9 +54,11 @@ public class HellManager {
         player.teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
     }
 
+
     public static boolean isDead(String player) {
         return dead.contains(player);
     }
+
 
 
 }
