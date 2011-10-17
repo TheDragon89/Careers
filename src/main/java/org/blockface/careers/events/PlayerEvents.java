@@ -89,10 +89,11 @@ public class PlayerEvents extends PlayerListener {
 
     @Override
     public void onPlayerRespawn(PlayerRespawnEvent event) {
-        if(event.getPlayer().hasPermission("careers.nohell")) return;
         if(JailManager.isJailed(event.getPlayer())){
             event.setRespawnLocation(JailManager.getJail());
             return;}
+
+        if(event.getPlayer().hasPermission("careers.nohell")) return;
 
         HellManager.setDead(event.getPlayer());
         event.setRespawnLocation(HellManager.getHell());
