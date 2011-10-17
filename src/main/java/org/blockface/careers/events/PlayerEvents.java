@@ -15,6 +15,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.*;
 
 public class PlayerEvents extends PlayerListener {
+
+
     @Override
     public void onPlayerJoin(PlayerJoinEvent event) {
         Job j = JobsManager.getJob(event.getPlayer());
@@ -87,6 +89,7 @@ public class PlayerEvents extends PlayerListener {
 
     @Override
     public void onPlayerRespawn(PlayerRespawnEvent event) {
+        if(event.getPlayer().hasPermission("careers.nohell")) return;
         if(JailManager.isJailed(event.getPlayer())){
             event.setRespawnLocation(JailManager.getJail());
             return;}
