@@ -37,15 +37,15 @@ public class CareersEvents {
     }
 
     public static boolean canPVP(Player attacker, Player victim) {
-        if(!Tools.isNight(attacker.getLocation())) return false;
-        Job ja = JobsManager.getJob(attacker);
-        Job jv = JobsManager.getJob(victim);
         //Allow if enemy towns.
         if(ChunkyVillageManager.usingChunkyVillage()) {
             ChunkyPlayer a = ChunkyManager.getChunkyPlayer(attacker);
             ChunkyPlayer b = ChunkyManager.getChunkyPlayer(victim);
             if(ChunkyTownManager.getStance(a,b) != ChunkyTown.Stance.ALLY) return true;
         }
+        if(!Tools.isNight(attacker.getLocation())) return false;
+        Job ja = JobsManager.getJob(attacker);
+        Job jv = JobsManager.getJob(victim);
 
         //Return if cannot kill
         if(!ja.hasAbility(Job.ABILITIES.KILL) && !ProvokeManager.isProvoker(attacker,victim)) return false;

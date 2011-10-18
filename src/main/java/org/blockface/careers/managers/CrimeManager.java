@@ -11,6 +11,7 @@ import org.blockface.careers.tasks.FreeWanted;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.getchunky.chunkyvillage.ChunkyTownManager;
 import org.getchunky.chunkyvillage.ChunkyVillage;
 import org.getchunky.chunkyvillage.objects.ChunkyTown;
 
@@ -49,7 +50,7 @@ public class CrimeManager {
             Player p = (Player)e;
             if(p.equals(victim)) continue;
 
-            if(ChunkyVillageManager.usingChunkyVillage() && ChunkyVillageManager.getStance(p,criminal) != ChunkyTown.Stance.ALLY)  continue;
+            if(ChunkyVillageManager.usingChunkyVillage() && ChunkyVillageManager.getStance(p, criminal) != ChunkyTown.Stance.ALLY)  continue;
 
             if(JobsManager.getJob(p).hasAbility(Job.ABILITIES.ARREST)) {
                 addWanted(criminal.getName(), type);

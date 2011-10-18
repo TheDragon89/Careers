@@ -91,6 +91,7 @@ public class Careers extends JavaPlugin {
         EntityEvents ee = new EntityEvents();
         pm.registerEvent(Event.Type.ENTITY_DAMAGE,ee, Event.Priority.Highest,this);
         pm.registerEvent(Event.Type.ENTITY_REGAIN_HEALTH,ee, Event.Priority.Normal,this);
+        pm.registerEvent(Event.Type.ENTITY_DEATH,ee, Event.Priority.Normal,this);
 
         //Block Events
         BlockEvents be = new BlockEvents();
