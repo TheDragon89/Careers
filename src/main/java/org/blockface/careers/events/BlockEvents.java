@@ -11,6 +11,7 @@ public class BlockEvents extends BlockListener{
 
        @Override
        public void onBlockBreak(BlockBreakEvent event){
+           if(event.isCancelled()) return;
            int bid = event.getBlock().getTypeId();
            Player player = event.getPlayer();
              if((bid <= 16 && bid >= 14) || bid == 21 || bid == 56 || bid == 73 || bid == 74){

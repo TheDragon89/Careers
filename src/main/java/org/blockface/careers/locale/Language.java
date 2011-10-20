@@ -37,6 +37,7 @@ public enum Language {
     DODGED("notification.dodged","You haved dodged the attack!",0),
     WAS_DODGED("notification.wasdodged","Your attack was dodged!",0),
     ARRESTED("notification.arrested","%s was arrested for %s",0),
+    NOJURISDICTION("notification.juristiction","You do not have jurisdiction over %s",0),
     FREED("notification.freed","You were released from jail.",0),
     JAIL_TIME("notification.jailtime","Jail time left: %s",0),
     SET_JAIL("notification.setjail","Jail set.",0),
@@ -62,8 +63,6 @@ public enum Language {
     SUPER_BREAKER_ACTIVATE("notification.superbreakeractivate", "You managed to activate your Super Breaker ability!", 0),
     SUPER_BREAKER_DEACTIVATE("notification.superbreakerdeactivate", "Your Super Breaker ability has been deactivated.", 0),
     SUPER_BREAKER_COOL_DOWN("notification.superbreakercooldown", "You are way to tired to do that again.", 0),
-
-
     ;
 
     private static List<String> deprecatedPaths = Arrays.asList(

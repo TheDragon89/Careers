@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.blockface.careers</groupId>
     <artifactId>Careers</artifactId>
-    <version>2.0</version>
+    <version>SNAPSHOT</version>
     <name>Careers</name>
     <url>http://blockface.org/</url>
     <repositories>
@@ -97,9 +97,16 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.dumptruckman</groupId>
+      <groupId>org.getchunky</groupId>
+      <artifactId>ChunkyVillage</artifactId>
+      <version>SNAPSHOT</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.getchunky</groupId>
       <artifactId>Chunky</artifactId>
-      <version>0.0.2</version>
+      <version>Colombo-SNAPSHOT</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>

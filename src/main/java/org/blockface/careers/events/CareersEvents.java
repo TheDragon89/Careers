@@ -12,7 +12,10 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+import org.getchunky.chunky.ChunkyManager;
+import org.getchunky.chunky.object.ChunkyPlayer;
+import org.getchunky.chunkyvillage.ChunkyTownManager;
+import org.getchunky.chunkyvillage.objects.ChunkyTown;
 
 public class CareersEvents {
 
@@ -34,9 +37,16 @@ public class CareersEvents {
     }
 
     public static boolean canPVP(Player attacker, Player victim) {
+        //Allow if enemy towns.
+        if(ChunkyVillageManager.usingChunkyVillage()) {
+            ChunkyPlayer a = ChunkyManager.getChunkyPlayer(attacker);
+            ChunkyPlayer b = ChunkyManager.getChunkyPlayer(victim);
+            if(ChunkyTownManager.getStance(a,b) != ChunkyTown.Stance.ALLY) return true;
+        }
         if(!Tools.isNight(attacker.getLocation())) return false;
         Job ja = JobsManager.getJob(attacker);
         Job jv = JobsManager.getJob(victim);
+
         //Return if cannot kill
         if(!ja.hasAbility(Job.ABILITIES.KILL) && !ProvokeManager.isProvoker(attacker,victim)) return false;
         if(ja.hasAbility(Job.ABILITIES.KILL)) {
@@ -44,6 +54,7 @@ public class CareersEvents {
                 victim.damage(2);
                 Language.CRITICAL_HIT.good(attacker);
             }}
+        //Try to dodge if Officer
         if(jv.hasAbility(Job.ABILITIES.ARREST)) {
             if(!CrimeManager.isWanted(attacker.getName())) CrimeManager.addWanted(attacker.getName(), Crime.TYPE.ASSAULT);
             if(Tools.randBoolean(jv.getAbilityChance())) {
@@ -52,6 +63,8 @@ public class CareersEvents {
                 return false;
             }
         }
+
+        //Log provoke
         ProvokeManager.addProvoker(victim,attacker);
         return true;
     }
@@ -115,9 +128,10 @@ public class CareersEvents {
         Job jd = JobsManager.getJob(damager.getName());
         if(!jd.hasAbility(Job.ABILITIES.ANTIMOB) || !(entity instanceof Creature)) return;
         Creature creature = (Creature)entity;
+        if(creature.getHealth() < 0) return;
         if(Tools.randBoolean(jd.getAbilityChance())) creature.damage(1000);
-        if(creature.getHealth() - damage <= 0) {
-            EconomyManager.payWage(damager, Config.getKnightWage());
+        if(creature.getHealth() - damage < 0) {
+            EconomyManager.payWage(damager, Config.getKnightWage(), "killing a mob.");
             jd.addExperience();}
 
     }

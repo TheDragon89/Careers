@@ -11,6 +11,9 @@ import org.blockface.careers.tasks.FreeWanted;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.getchunky.chunkyvillage.ChunkyTownManager;
+import org.getchunky.chunkyvillage.ChunkyVillage;
+import org.getchunky.chunkyvillage.objects.ChunkyTown;
 
 import java.util.HashMap;
 
@@ -45,15 +48,17 @@ public class CrimeManager {
 		{
 			if(!(e instanceof Player)) continue;
             Player p = (Player)e;
-				if(p.equals(victim)) continue;
-				if(JobsManager.getJob(p).hasAbility(Job.ABILITIES.ARREST)) {
-					addWanted(criminal.getName(), type);
-					return;
-				} else {
-                    WitnessManager.getWitness(p.getName()).addCriminal(criminal.getName(),type);
-                    Language.WITNESSED.bad(p,criminal.getName(),type.name().toLowerCase());
-                    Language.SAW_YOU.bad(criminal,p.getName(),type.name().toLowerCase());
-				}}
+            if(p.equals(victim)) continue;
+
+            if(ChunkyVillageManager.usingChunkyVillage() && ChunkyVillageManager.getStance(p, criminal) != ChunkyTown.Stance.ALLY)  continue;
+
+            if(JobsManager.getJob(p).hasAbility(Job.ABILITIES.ARREST)) {
+                addWanted(criminal.getName(), type);
+                return;}
+            else {
+                WitnessManager.getWitness(p.getName()).addCriminal(criminal.getName(),type);
+                Language.WITNESSED.bad(p,criminal.getName(),type.name().toLowerCase());
+                Language.SAW_YOU.bad(criminal,p.getName(),type.name().toLowerCase());}}
     }
 
     public static void removeWanted(String name) {

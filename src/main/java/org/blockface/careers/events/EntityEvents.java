@@ -19,18 +19,24 @@ public class EntityEvents extends EntityListener{
             if(subEvent.getDamager() instanceof Player) {
                 Player victim = (Player)event.getEntity();
                 Player attacker = (Player)subEvent.getDamager();
-                event.setCancelled(!CareersEvents.canPVP(attacker,victim));
-                if(!event.isCancelled())
-                    if(victim.getHealth()-subEvent.getDamage() < 1)
-                        CareersEvents.onPlayerDeath(attacker,victim);
-
-            }}
+                event.setCancelled(!CareersEvents.canPVP(attacker,victim));}}
         else if(event instanceof EntityDamageByEntityEvent) {
                 EntityDamageByEntityEvent subEvent = (EntityDamageByEntityEvent)event.getEntity().getLastDamageCause();
                 if(subEvent.getDamager() instanceof Player)
                     CareersEvents.onMobDamage(event.getEntity(),(Player)subEvent.getDamager(),subEvent.getDamage());
 
         }
+    }
+
+    @Override
+    public void onEntityDeath(EntityDeathEvent event) {
+        if(!(event.getEntity() instanceof Player)) return;
+        Player victim = (Player)event.getEntity();
+        if(!(victim.getLastDamageCause() instanceof EntityDamageByEntityEvent)) return;
+        EntityDamageByEntityEvent subEvent = (EntityDamageByEntityEvent)victim.getLastDamageCause();
+        if(!(subEvent.getDamager() instanceof Player)) return;
+        Player attacker = (Player)subEvent.getDamager();
+        CareersEvents.onPlayerDeath(attacker,victim);
     }
 
     @Override
