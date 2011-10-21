@@ -4,12 +4,9 @@ import org.blockface.careers.config.Config;
 import org.blockface.careers.jobs.Job;
 import org.blockface.careers.jobs.JobsManager;
 import org.blockface.careers.locale.Language;
-import org.blockface.careers.locale.Logging;
 import org.blockface.careers.managers.*;
 import org.blockface.careers.objects.Inmate;
 import org.blockface.careers.objects.Witness;
-import org.blockface.careers.util.Tools;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.*;
@@ -52,16 +49,11 @@ public class PlayerEvents extends PlayerListener {
                 if(blockid == 3 || blockid == 4 ||blockid == 98)
                    CareersEvents.GreenThumb(event.getPlayer(), event.getClickedBlock());
                 if(blockid == 60){
-                    CareersEvents.MiracleGrow(event.getPlayer(), event.getClickedBlock(), helditemeid);}}}
-
-       if(event.getAction() == Action.RIGHT_CLICK_AIR && event.getPlayer().getItemInHand() != null){
-            int helditemeid =  event.getPlayer().getItemInHand().getTypeId();
-            if(helditemeid == 270 || helditemeid == 274 || helditemeid == 278 || helditemeid == 285 || helditemeid == 257){
-
-
-            }
-       }
-
+                    CareersEvents.MiracleGrow(event.getPlayer(), event.getClickedBlock(), helditemeid);}}
+        if(helditemeid == 296)
+            if(blockid == 3)
+                CareersEvents.CalltotheWild(event.getPlayer());
+        }
     }
 
     @Override
