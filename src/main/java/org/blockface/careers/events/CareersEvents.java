@@ -66,7 +66,7 @@ public class CareersEvents {
         }
 
         //Log provoke
-        ProvokeManager.addProvoker(victim,attacker);
+        if(allies) ProvokeManager.addProvoker(victim,attacker);
         return true;
     }
 
