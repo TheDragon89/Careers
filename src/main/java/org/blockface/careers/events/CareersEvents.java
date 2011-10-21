@@ -44,7 +44,7 @@ public class CareersEvents {
             ChunkyPlayer b = ChunkyManager.getChunkyPlayer(victim);
             allies = ChunkyTownManager.getStance(a,b) == ChunkyTown.Stance.ALLY;
         }
-        if(!Tools.isNight(attacker.getLocation())) return false;
+        if(!Tools.isNight(attacker.getLocation()) && allies) return false;
         Job ja = JobsManager.getJob(attacker);
         Job jv = JobsManager.getJob(victim);
 
@@ -57,7 +57,7 @@ public class CareersEvents {
             }}
         //Try to dodge if Officer
         if(jv.hasAbility(Job.ABILITIES.ARREST)) {
-            if(!CrimeManager.isWanted(attacker.getName())) CrimeManager.addWanted(attacker.getName(), Crime.TYPE.ASSAULT);
+            if(!CrimeManager.isWanted(attacker.getName()) && allies) CrimeManager.addWanted(attacker.getName(), Crime.TYPE.ASSAULT);
             if(Tools.randBoolean(jv.getAbilityChance())) {
                 Language.DODGED.good(victim);
                 Language.WAS_DODGED.bad(attacker);
