@@ -208,7 +208,7 @@ public class CareersEvents {
     public static void CalltotheWild(Player player){
         Job jd = JobsManager.getJob(player.getName());
         if(!jd.hasAbility(Job.ABILITIES.CALLTOTHEWILD)) return;
-        player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
+        player.setItemInHand(null);
         if(Tools.randBoolean(jd.getAbilityChance())){
         int numAnimal = (int) (Math.random() * 5) + 1;
             for(int i = 0; i < numAnimal; i++)
