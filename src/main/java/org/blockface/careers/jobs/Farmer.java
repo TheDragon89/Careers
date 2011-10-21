@@ -24,5 +24,7 @@ public class Farmer extends GenericJob {
     public void printInfo(Player player) {
         super.printInfo(player);
         player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Miracle Grow Chance: " + getAbilityChance() + "%");
+        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Green Thumb Chance: " + getAbilityChance() + "%");
+        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Call to the Wild Chance: " + getAbilityChance() + "%");
     }
 }
