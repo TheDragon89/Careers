@@ -15,13 +15,7 @@ public class Miner extends GenericJob {
     }
 
     private void loadInfo() {
-        this.abilities.add(ABILITIES.DOUBLEDROP);
-        this.abilities.add(ABILITIES.TREASUREFINDER);
-    }
-
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Double Drop Chance: " + getAbilityChance() + "%");
+        this.abilities.add(ABILITIES.DOUBLE_DROP);
+        this.abilities.add(ABILITIES.TREASURE_FINDER);
     }
 }

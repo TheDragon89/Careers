@@ -19,12 +19,4 @@ public class Tamer extends GenericJob {
         this.abilities.add(ABILITIES.TAME);
     }
 
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "No Ability Yet: " + getAbilityChance() + "%");
-
-
-    }
-
 }

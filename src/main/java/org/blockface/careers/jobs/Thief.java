@@ -18,10 +18,4 @@ public class Thief extends GenericJob {
         this.abilities.add(ABILITIES.LOCKPICK);
         this.abilities.add(ABILITIES.PICKPOCKET);
     }
-
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Lock Pick Chance: " + getAbilityChance() + "%");
-    }
 }

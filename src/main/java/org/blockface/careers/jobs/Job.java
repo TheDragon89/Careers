@@ -9,19 +9,24 @@ public interface Job {
         HEAL,
         CURE,
         LOCKPICK,
-        ANTIMOB,
+        ANTI_MOB,
         KILL,
         POISON,
-        DOUBLEDROP,
-        SUPERBREAKER,
-        TREASUREFINDER,
+        DOUBLE_DROP,
+        SUPER_BREAKER,
+        TREASURE_FINDER,
         PICKPOCKET,
         ARREST,
-        MIRACLEGROW,
-        GREENTHUMB,
-        CALLTOTHEWILD,
-        TAME
+        MIRACLE_GROW,
+        GREEN_THUMB,
+        CALL_TO_THE_WILD,
+        TAME;
 
+
+        @Override
+        public String toString() {
+           return (Character.toUpperCase(name().charAt(0)) + name().toLowerCase().substring(1)).replace("_", " ");
+        }
     }
 
     public String getName();

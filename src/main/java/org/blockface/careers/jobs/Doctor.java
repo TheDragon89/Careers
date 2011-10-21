@@ -23,10 +23,4 @@ public class Doctor extends GenericJob {
         float level = this.getLevel();
         return Math.floor(100*(1-6/(level+6)));
     }
-
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Health Regen Rate: " + getAbilityChance() + "%");
-    }
 }

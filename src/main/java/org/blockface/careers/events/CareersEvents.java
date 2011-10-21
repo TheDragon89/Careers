@@ -136,7 +136,7 @@ public class CareersEvents {
 
     public static void onMobDamage(Entity entity, Player damager, int damage) {
         Job jd = JobsManager.getJob(damager.getName());
-        if(!jd.hasAbility(Job.ABILITIES.ANTIMOB) || !(entity instanceof Creature)) return;
+        if(!jd.hasAbility(Job.ABILITIES.ANTI_MOB) || !(entity instanceof Creature)) return;
         Creature creature = (Creature)entity;
         if(creature.getHealth() < 0) return;
         if(Tools.randBoolean(jd.getAbilityChance())) creature.damage(1000);
@@ -148,7 +148,7 @@ public class CareersEvents {
 
     public static boolean DoubleDrop(Player player){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.DOUBLEDROP)) return false;
+        if(!jd.hasAbility(Job.ABILITIES.DOUBLE_DROP)) return false;
 
         if(Tools.randBoolean(jd.getAbilityChance())){
             jd.addExperience();
@@ -161,7 +161,7 @@ public class CareersEvents {
 
     public static void GreenThumb(Player player, Block block){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.GREENTHUMB)) return;
+        if(!jd.hasAbility(Job.ABILITIES.GREEN_THUMB)) return;
         int blockid = block.getTypeId();
         player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
         if(Tools.randBoolean(jd.getAbilityChance())){
@@ -181,7 +181,7 @@ public class CareersEvents {
 
     public static void MiracleGrow(Player player, Block block, int id){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.MIRACLEGROW)) return;
+        if(!jd.hasAbility(Job.ABILITIES.MIRACLE_GROW)) return;
           if(Tools.randBoolean(jd.getAbilityChance())){
               if(id == 295)
                      block.getRelative(BlockFace.UP).setTypeIdAndData(59, (byte) 7, false);
@@ -196,7 +196,7 @@ public class CareersEvents {
 
     public static boolean TreasureFinder(Player player){
        Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.TREASUREFINDER)) return false;
+        if(!jd.hasAbility(Job.ABILITIES.TREASURE_FINDER)) return false;
           if(Tools.randBoolean(jd.getAbilityChance())){
             jd.addExperience();
             Language.TREASURE_FINDER.good(player);
@@ -207,7 +207,7 @@ public class CareersEvents {
 
     public static void CalltotheWild(Player player){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.CALLTOTHEWILD)) return;
+        if(!jd.hasAbility(Job.ABILITIES.CALL_TO_THE_WILD)) return;
         player.setItemInHand(null);
         if(Tools.randBoolean(jd.getAbilityChance())){
         int numAnimal = (int) (Math.random() * 5) + 1;
