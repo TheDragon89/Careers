@@ -31,6 +31,18 @@ public class BlockEvents extends BlockListener{
 
            if(bid == 2 || bid == 3){
                 if(CareersEvents.TreasureFinder(player)){
+                    int chance = (int) (Math.random() * 1000);
+
+                    if(chance%100 == 0)
+                       player.getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.INK_SACK, 4, (short) 0, (byte) 2));
+
+                    else if(chance%200 == 0)
+                        player.getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.GOLD_INGOT, 1));
+
+                    else if(chance == 777)
+                         player.getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.DIAMOND, 1));
+
+                    else
                      player.getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.GLOWSTONE_DUST, 1));
 
                 }
@@ -38,7 +50,7 @@ public class BlockEvents extends BlockListener{
        }
 
     public void onBlockPlace(BlockPlaceEvent event){
-        if(event.getBlockPlaced().getTypeId() == 14 || event.getBlockPlaced().getTypeId() == 15){
+        if(!event.getPlayer().isOp() && (event.getBlockPlaced().getTypeId() == 14 || event.getBlockPlaced().getTypeId() == 15)){
 
             event.getBlock().setType(Material.AIR);
             event.getPlayer().getItemInHand().setAmount(event.getPlayer().getItemInHand().getAmount() + 1);

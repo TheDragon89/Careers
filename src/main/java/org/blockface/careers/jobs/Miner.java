@@ -16,7 +16,6 @@ public class Miner extends GenericJob {
 
     private void loadInfo() {
         this.abilities.add(ABILITIES.DOUBLEDROP);
-        this.abilities.add(ABILITIES.SUPERBREAKER);
         this.abilities.add(ABILITIES.TREASUREFINDER);
     }
 

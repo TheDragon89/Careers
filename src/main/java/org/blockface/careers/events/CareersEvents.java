@@ -82,6 +82,14 @@ public class CareersEvents {
         Job jp = JobsManager.getJob(player);
         Job jrc = JobsManager.getJob(rightClicked);
 
+        //Change Careers
+        if(player.getItemInHand().getType().equals(Material.BOOK)){
+            if(jp.getName().compareTo("Bum") == 0)
+                JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));
+            else{
+               if(EconomyManager.pay(player, rightClicked, 50, "You trained someone in your career."))
+                   JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));}}
+
         //Police Arrest
         if(jp.hasAbility(Job.ABILITIES.ARREST) && CrimeManager.isWanted(rightClicked.getName())) {
             JailManager.arrestPlayer(rightClicked,player);
@@ -104,7 +112,7 @@ public class CareersEvents {
 
         //Tame
         if(jrc.hasAbility(Job.ABILITIES.TAME)) {
-            WolfManager.buyWolf(player,rightClicked,jrc);}
+            AnimalManager.buyWolf(player, rightClicked, jrc);}
         
     }
     
@@ -160,7 +168,7 @@ public class CareersEvents {
                if(blockid == 4)
                    block.setTypeId(48);
                if(blockid == 98)
-                   block.setData((byte) 1); //not sure if this will work
+                   block.setData((byte) 1);
             Language.GREEN_THUMB.good(player);
             jd.addExperience();
         }
@@ -193,5 +201,20 @@ public class CareersEvents {
             return true;
         }
         return false;
+    }
+
+    public static void CalltotheWild(Player player){
+        Job jd = JobsManager.getJob(player.getName());
+        if(!jd.hasAbility(Job.ABILITIES.CALLTOTHEWILD)) return;
+        player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
+        if(Tools.randBoolean(jd.getAbilityChance())){
+        int numAnimal = (int) (Math.random() * 5) + 1;
+            for(int i = 0; i < numAnimal; i++)
+                AnimalManager.SummonFarmAnimal(player, (int) Math.random() * 4 );
+            Language.CALL_TO_THE_WILD.good(player);
+            jd.addExperience();
+        }
+        else
+        Language.CALL_TO_THE_WILD_FAILED.bad(player);
     }
 }

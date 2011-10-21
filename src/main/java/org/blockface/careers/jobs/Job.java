@@ -19,6 +19,7 @@ public interface Job {
         ARREST,
         MIRACLEGROW,
         GREENTHUMB,
+        CALLTOTHEWILD,
         TAME
 
     }
