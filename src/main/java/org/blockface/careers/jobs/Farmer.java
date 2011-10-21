@@ -17,6 +17,7 @@ public class Farmer extends GenericJob {
     private void loadInfo() {
         this.abilities.add(ABILITIES.MIRACLEGROW);
         this.abilities.add(ABILITIES.GREENTHUMB);
+        this.abilities.add(ABILITIES.CALLTOTHEWILD);
     }
 
     @Override
