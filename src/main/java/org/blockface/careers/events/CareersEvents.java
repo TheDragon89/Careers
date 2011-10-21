@@ -42,7 +42,7 @@ public class CareersEvents {
         if(ChunkyVillageManager.usingChunkyVillage()) {
             ChunkyPlayer a = ChunkyManager.getChunkyPlayer(attacker);
             ChunkyPlayer b = ChunkyManager.getChunkyPlayer(victim);
-            allies = ChunkyTownManager.getStance(a,b) != ChunkyTown.Stance.ALLY;
+            allies = ChunkyTownManager.getStance(a,b) == ChunkyTown.Stance.ALLY;
         }
         if(!Tools.isNight(attacker.getLocation())) return false;
         Job ja = JobsManager.getJob(attacker);
