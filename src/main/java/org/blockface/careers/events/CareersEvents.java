@@ -37,7 +37,7 @@ public class CareersEvents {
     }
 
     public static boolean canPVP(Player attacker, Player victim) {
-        boolean allies = false;
+        boolean allies = true;
         //Allow if enemy towns.
         if(ChunkyVillageManager.usingChunkyVillage()) {
             ChunkyPlayer a = ChunkyManager.getChunkyPlayer(attacker);
