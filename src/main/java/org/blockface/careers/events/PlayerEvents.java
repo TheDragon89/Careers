@@ -51,7 +51,7 @@ public class PlayerEvents extends PlayerListener {
                 if(blockid == 60){
                     CareersEvents.MiracleGrow(event.getPlayer(), event.getClickedBlock(), helditemeid);}}
         if(helditemeid == 296)
-            if(blockid == 3)
+            if(blockid == 2)
                 CareersEvents.CalltotheWild(event.getPlayer());
         }
     }

@@ -84,11 +84,13 @@ public class CareersEvents {
 
         //Change Careers
         if(player.getItemInHand().getType().equals(Material.BOOK)){
+            if(jrc.getName().equalsIgnoreCase(jp.getName())) return;
             if(jp.getName().equalsIgnoreCase("Bum"))
                 JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));
             else{
                if(EconomyManager.pay(player, rightClicked, 50, "training"))
-                   JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));}}
+                   JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));}
+            return;}
 
         //Police Arrest
         if(jp.hasAbility(Job.ABILITIES.ARREST) && CrimeManager.isWanted(rightClicked.getName())) {
