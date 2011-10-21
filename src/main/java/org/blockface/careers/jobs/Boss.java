@@ -24,10 +24,4 @@ public class Boss extends GenericJob {
     public double getAbilityChance() {
         return 100;
     }
-
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "All Abilities: " + getAbilityChance() + "%");
-    }
 }

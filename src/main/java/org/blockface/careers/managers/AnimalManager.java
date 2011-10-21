@@ -15,9 +15,9 @@ public class AnimalManager {
     public static void SummonFarmAnimal(Player player, int type){
            if(type == 0)
               player.getWorld().spawnCreature(player.getLocation(), CreatureType.COW);
-        if(type == 1)
+       else if(type == 1)
                player.getWorld().spawnCreature(player.getLocation(), CreatureType.PIG);
-        if(type == 2)
+       else if(type == 2)
                player.getWorld().spawnCreature(player.getLocation(), CreatureType.SHEEP);
         else
                player.getWorld().spawnCreature(player.getLocation(), CreatureType.CHICKEN);

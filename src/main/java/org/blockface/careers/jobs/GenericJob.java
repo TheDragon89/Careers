@@ -104,10 +104,12 @@ public class GenericJob implements Job{
     public void printInfo(Player player) {
         if(player == null) return;
         player.sendMessage(ChatColor.DARK_GRAY + "|-----------------| " + this.getFormattedName() + ChatColor.DARK_GRAY + " |-----------------|");
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN+"Level: " + this.getLevel());
+        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN+"Level: " + ChatColor.YELLOW + this.getLevel());
         int newxp = (int)Math.pow(this.getLevel()+1,2);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN+"Experience Points: " + this.exp + " / " + newxp);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN+"Next Level: " + (newxp-this.exp));
+        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN+ "Experience Points: " + ChatColor.YELLOW + this.exp + " / " + newxp);
+        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN+ "Next Level: " + ChatColor.YELLOW + (newxp-this.exp));
+        for(ABILITIES ability : abilities)
+            player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + ability.toString() + " Chance: " + ChatColor.YELLOW + getAbilityChance() + "%");
     }
 
     public void applyTitle() {

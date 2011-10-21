@@ -62,6 +62,8 @@ public enum Language {
     TREASURE_FINDER("notification.treasurefinder", "You managed to find some some treasure! Aren't you lucky!", 0),
     CALL_TO_THE_WILD("notification.calltothewild", "You managed to summon some animals!", 0),
     CALL_TO_THE_WILD_FAILED("notification.calltothewildfailed", "You failed to summon some animals!", 0),
+    JOB_SWITCH("notification.jobSwitch", "You are now a %s", 0),
+    PACK_ANIMAL_SUCCESS("notification.packanimalsuccess", "You summoned your pack to help you!", 0)
     ;
 
     private static List<String> deprecatedPaths = Arrays.asList(

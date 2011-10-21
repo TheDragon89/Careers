@@ -15,12 +15,6 @@ public class Knight extends GenericJob {
     }
 
     private void loadInfo() {
-        this.abilities.add(ABILITIES.ANTIMOB);
-    }
-
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "KO Chance: " + getAbilityChance() + "%");
+        this.abilities.add(ABILITIES.ANTI_MOB);
     }
 }

@@ -9,9 +9,7 @@ import org.blockface.careers.util.Tools;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Creature;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.getchunky.chunky.ChunkyManager;
 import org.getchunky.chunky.object.ChunkyPlayer;
 import org.getchunky.chunkyvillage.ChunkyTownManager;
@@ -63,6 +61,8 @@ public class CareersEvents {
                 Language.WAS_DODGED.bad(attacker);
                 return false;
             }
+            //Tamers PackAnimal ability
+            SummonPack(victim);
         }
 
         //Log provoke
@@ -84,11 +84,13 @@ public class CareersEvents {
 
         //Change Careers
         if(player.getItemInHand().getType().equals(Material.BOOK)){
-            if(jp.getName().compareTo("Bum") == 0)
+            if(jrc.getName().equalsIgnoreCase(jp.getName())) return;
+            if(jp.getName().equalsIgnoreCase("Bum"))
                 JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));
             else{
-               if(EconomyManager.pay(player, rightClicked, 50, "You trained someone in your career."))
-                   JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));}}
+               if(EconomyManager.pay(player, rightClicked, 50, "training"))
+                   JobsManager.setJob(JobsManager.constructJob(jrc.getName(),player.getName()));}
+            return;}
 
         //Police Arrest
         if(jp.hasAbility(Job.ABILITIES.ARREST) && CrimeManager.isWanted(rightClicked.getName())) {
@@ -134,7 +136,7 @@ public class CareersEvents {
 
     public static void onMobDamage(Entity entity, Player damager, int damage) {
         Job jd = JobsManager.getJob(damager.getName());
-        if(!jd.hasAbility(Job.ABILITIES.ANTIMOB) || !(entity instanceof Creature)) return;
+        if(!jd.hasAbility(Job.ABILITIES.ANTI_MOB) || !(entity instanceof Creature)) return;
         Creature creature = (Creature)entity;
         if(creature.getHealth() < 0) return;
         if(Tools.randBoolean(jd.getAbilityChance())) creature.damage(1000);
@@ -146,7 +148,7 @@ public class CareersEvents {
 
     public static boolean DoubleDrop(Player player){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.DOUBLEDROP)) return false;
+        if(!jd.hasAbility(Job.ABILITIES.DOUBLE_DROP)) return false;
 
         if(Tools.randBoolean(jd.getAbilityChance())){
             jd.addExperience();
@@ -159,7 +161,7 @@ public class CareersEvents {
 
     public static void GreenThumb(Player player, Block block){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.GREENTHUMB)) return;
+        if(!jd.hasAbility(Job.ABILITIES.GREEN_THUMB)) return;
         int blockid = block.getTypeId();
         player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
         if(Tools.randBoolean(jd.getAbilityChance())){
@@ -179,7 +181,7 @@ public class CareersEvents {
 
     public static void MiracleGrow(Player player, Block block, int id){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.MIRACLEGROW)) return;
+        if(!jd.hasAbility(Job.ABILITIES.MIRACLE_GROW)) return;
           if(Tools.randBoolean(jd.getAbilityChance())){
               if(id == 295)
                      block.getRelative(BlockFace.UP).setTypeIdAndData(59, (byte) 7, false);
@@ -194,7 +196,7 @@ public class CareersEvents {
 
     public static boolean TreasureFinder(Player player){
        Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.TREASUREFINDER)) return false;
+        if(!jd.hasAbility(Job.ABILITIES.TREASURE_FINDER)) return false;
           if(Tools.randBoolean(jd.getAbilityChance())){
             jd.addExperience();
             Language.TREASURE_FINDER.good(player);
@@ -205,8 +207,8 @@ public class CareersEvents {
 
     public static void CalltotheWild(Player player){
         Job jd = JobsManager.getJob(player.getName());
-        if(!jd.hasAbility(Job.ABILITIES.CALLTOTHEWILD)) return;
-        player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
+        if(!jd.hasAbility(Job.ABILITIES.CALL_TO_THE_WILD)) return;
+        player.setItemInHand(null);
         if(Tools.randBoolean(jd.getAbilityChance())){
         int numAnimal = (int) (Math.random() * 5) + 1;
             for(int i = 0; i < numAnimal; i++)
@@ -217,4 +219,17 @@ public class CareersEvents {
         else
         Language.CALL_TO_THE_WILD_FAILED.bad(player);
     }
+
+    public static void SummonPack(Player player){
+       Job jd = JobsManager.getJob(player.getName());
+        if(!jd.hasAbility(Job.ABILITIES.PACKANIMAL)) return;
+        if(Tools.randBoolean(jd.getAbilityChance())){
+             Wolf wolf = (Wolf)player.getWorld().spawnCreature(player.getLocation(), CreatureType.WOLF);
+             Wolf wolf2 = (Wolf)player.getWorld().spawnCreature(player.getLocation(), CreatureType.WOLF);
+            wolf.setOwner(player);
+            wolf2.setOwner(player);
+            Language.PACK_ANIMAL_SUCCESS.good(player);
+        }
+    }
+
 }

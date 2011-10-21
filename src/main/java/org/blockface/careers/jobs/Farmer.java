@@ -1,7 +1,6 @@
 package org.blockface.careers.jobs;
 
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 
 public class Farmer extends GenericJob {
 
@@ -15,14 +14,8 @@ public class Farmer extends GenericJob {
     }
 
     private void loadInfo() {
-        this.abilities.add(ABILITIES.MIRACLEGROW);
-        this.abilities.add(ABILITIES.GREENTHUMB);
-        this.abilities.add(ABILITIES.CALLTOTHEWILD);
-    }
-
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Miracle Grow Chance: " + getAbilityChance() + "%");
+        this.abilities.add(ABILITIES.MIRACLE_GROW);
+        this.abilities.add(ABILITIES.GREEN_THUMB);
+        this.abilities.add(ABILITIES.CALL_TO_THE_WILD);
     }
 }

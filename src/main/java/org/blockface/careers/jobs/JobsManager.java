@@ -1,5 +1,6 @@
 package org.blockface.careers.jobs;
 
+import org.blockface.careers.locale.Language;
 import org.blockface.careers.locale.Logging;
 import org.blockface.careers.persistance.PersistanceManager;
 import org.bukkit.Bukkit;
@@ -46,7 +47,9 @@ public class JobsManager {
         JOBS.put(job.getPlayer(), job);
         PersistanceManager.saveJob(job);
         job.applyTitle();
-        job.printInfo(Bukkit.getServer().getPlayer(job.getPlayer()));
+        Player player = Bukkit.getServer().getPlayer(job.getPlayer());
+        job.printInfo(player);
+        Language.JOB_SWITCH.good(player, job.getName());
     }
 
 }

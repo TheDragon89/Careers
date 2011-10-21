@@ -18,9 +18,4 @@ public class Assassin extends GenericJob {
         this.abilities.add(ABILITIES.POISON);
     }
 
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Fast Poison Chance: " + getAbilityChance() + "%");
-    }
 }

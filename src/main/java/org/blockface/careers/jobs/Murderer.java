@@ -16,10 +16,4 @@ public class Murderer extends GenericJob {
     private void loadInfo() {
         this.abilities.add(ABILITIES.KILL);
     }
-
-    @Override
-    public void printInfo(Player player) {
-        super.printInfo(player);
-        player.sendMessage(ChatColor.DARK_GRAY + "| " + ChatColor.GREEN + "Critical Hit Chance: " + this.getAbilityChance() + "%");
-    }
 }
