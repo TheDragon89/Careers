@@ -37,18 +37,19 @@ public class CareersEvents {
     }
 
     public static boolean canPVP(Player attacker, Player victim) {
+        boolean allies = true;
         //Allow if enemy towns.
         if(ChunkyVillageManager.usingChunkyVillage()) {
             ChunkyPlayer a = ChunkyManager.getChunkyPlayer(attacker);
             ChunkyPlayer b = ChunkyManager.getChunkyPlayer(victim);
-            if(ChunkyTownManager.getStance(a,b) != ChunkyTown.Stance.ALLY) return true;
+            allies = ChunkyTownManager.getStance(a,b) == ChunkyTown.Stance.ALLY;
         }
-        if(!Tools.isNight(attacker.getLocation())) return false;
+        if(!Tools.isNight(attacker.getLocation()) && allies) return false;
         Job ja = JobsManager.getJob(attacker);
         Job jv = JobsManager.getJob(victim);
 
         //Return if cannot kill
-        if(!ja.hasAbility(Job.ABILITIES.KILL) && !ProvokeManager.isProvoker(attacker,victim)) return false;
+        if(!ja.hasAbility(Job.ABILITIES.KILL) && !ProvokeManager.isProvoker(attacker,victim) && allies) return false;
         if(ja.hasAbility(Job.ABILITIES.KILL)) {
             if(Tools.randBoolean(ja.getAbilityChance())) {
                 victim.damage(2);
@@ -56,7 +57,7 @@ public class CareersEvents {
             }}
         //Try to dodge if Officer
         if(jv.hasAbility(Job.ABILITIES.ARREST)) {
-            if(!CrimeManager.isWanted(attacker.getName())) CrimeManager.addWanted(attacker.getName(), Crime.TYPE.ASSAULT);
+            if(!CrimeManager.isWanted(attacker.getName()) && allies) CrimeManager.addWanted(attacker.getName(), Crime.TYPE.ASSAULT);
             if(Tools.randBoolean(jv.getAbilityChance())) {
                 Language.DODGED.good(victim);
                 Language.WAS_DODGED.bad(attacker);
@@ -65,16 +66,15 @@ public class CareersEvents {
         }
 
         //Log provoke
-        ProvokeManager.addProvoker(victim,attacker);
+        if(allies) ProvokeManager.addProvoker(victim,attacker);
         return true;
     }
 
     public static void onPlayerDeath(Player attacker, Player victim) {
         Job ja = JobsManager.getJob(attacker);
-        if(ja instanceof Murderer) {
+        if(ja.hasAbility(Job.ABILITIES.KILL)) {
             ja.addExperience();
-            CrimeManager.alertWitnesses(attacker,victim, Crime.TYPE.MURDER);
-        }
+            CrimeManager.alertWitnesses(attacker,victim, Crime.TYPE.MURDER);}
         EconomyManager.payAll(victim,attacker);
     }
 
