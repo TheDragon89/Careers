@@ -223,11 +223,9 @@ public class CareersEvents {
     public static void SummonPack(Player player){
        Job jd = JobsManager.getJob(player.getName());
         if(!jd.hasAbility(Job.ABILITIES.PACKANIMAL)) return;
-        if(Tools.randBoolean(jd.getAbilityChance())){
+        if(Tools.randBoolean(jd.getAbilityChance()/10)){
              Wolf wolf = (Wolf)player.getWorld().spawnCreature(player.getLocation(), CreatureType.WOLF);
-             Wolf wolf2 = (Wolf)player.getWorld().spawnCreature(player.getLocation(), CreatureType.WOLF);
             wolf.setOwner(player);
-            wolf2.setOwner(player);
             Language.PACK_ANIMAL_SUCCESS.good(player);
         }
     }
